@@ -4,5 +4,3 @@
 ```code
 > npm i @ozrageharm/epiccore
 ```
-
-## I will add more documentation soon
