@@ -1,4 +1,4 @@
-const { get } = require("request-promise");
+const axios = require("axios");
 
 class Cosmetics {
   async getCosmetic(name, type, id) {
@@ -7,14 +7,11 @@ class Cosmetics {
         id ? id : `search?name=${name}&type=${type}`
       }`;
 
-      const cosmetic = await get({
-        url,
-        json: true,
-      });
+      const response = await axios.get(url);
 
-      if (cosmetic.data) {
-        const assignedType = type || cosmetic.data.type.value;
-        return { ...cosmetic.data, type: assignedType };
+      if (response.data.data) {
+        const assignedType = type || response.data.data.type.value;
+        return { ...response.data.data, type: assignedType };
       } else {
         return undefined;
       }
@@ -24,7 +21,7 @@ class Cosmetics {
   }
 
   async getPath(path) {
-    path
+    path = path
       .replace(/^FortniteGame\/Content/, "/Game")
       .replace(
         /FortniteGame\/Plugins\/GameFeatures\/BRCosmetics\/Content/,

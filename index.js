@@ -2,6 +2,7 @@ const Auth = require('./src/auth/Auth.js');
 const MCP = require('./src/MCP.js');
 const Cosmetics = require('./src/Cosmetics.js');
 const Playlists = require('./src/Playlist.js');
+const Account = require('./src/Account.js');
 
 class Api {
     constructor() {
@@ -9,6 +10,7 @@ class Api {
         this.cosmetics = new Cosmetics();
         this.mcp = new MCP();
         this.playlist = new Playlists();
+        this.account = new Account();
     }
     
     async login(auth, client) {
@@ -41,6 +43,14 @@ class Api {
 
     async getAllPlaylists () {    
         return await this.playlist.getAllPlaylists();
+    }
+
+    async getStatsByName(name, apiKey) {
+        return await this.account.getStatsByName(name, apiKey);
+    }
+
+    async getStatsById(id, apiKey) {
+        return await this.account.getStatsById(id, apiKey);
     }
 }
 

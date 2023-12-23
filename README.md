@@ -12,11 +12,8 @@
 const epiccore = require('@ozrageharm/epiccore');
 
 (async () => {
-
     const authCode = "your-auth-code-here"
-
     const auth = await epiccore.login({ method: "code", value: authCode });
-
     console.log(`Logged in as: ${auth.displayName}`)
 
 })();
@@ -28,9 +25,7 @@ const epiccore = require('@ozrageharm/epiccore');
 const { getPlaylist, getAllPlaylists } = require('@ozrageharm/epiccore');
 
 const playlist_id = "playlist-id-here";
-
 const playlist = getPlaylist(playlist_id);
-
 const playlists = getAllPlaylists();
 
 console.log(playlist, playlists)
@@ -46,4 +41,16 @@ const cosmetic = getCosmetic("cosmetic-name (optional)", "cosmetic-type (optiona
 
 const path = getPath(cosmetic.path)
 console.log(cosmetic, path)
+```
+
+### Getting Player Stats By Username and Account Id
+
+```javascript
+const { getStatsByName, getStatsById } = require('@ozrageharm/epiccore');
+
+const apiKey = "api-key" // fortnite-api.com api key
+const acc_by_name = getStatsByName("acc-username", apiKey)
+const acc_by_id = getStatsById("acc-id", apiKey)
+
+console.log(acc_by_name, acc_by_id)
 ```
