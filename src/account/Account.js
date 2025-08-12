@@ -3,7 +3,7 @@ const axios = require("axios");
 class Account {
   async getStatsByName(name, apiKey) {
     try {
-      const url = `https://fortnite-api.com/v2/stats/br/v2/${name}`;
+      const url = `https://fortnite-api.com/v2/stats/br/v2/?name=${name}`;
 
       const headers = {
         Authorization: apiKey, // fortnite-api.com API key
@@ -21,7 +21,7 @@ class Account {
 
   async getStatsById(id, apiKey) {
     try {
-      const url = `https://fortnite-api.com/v2/stats/br/v2/${id}`;
+      const url = `https://fortnite-api.com/v2/stats/br/v2/?name=${id}`;
 
       const headers = {
         Authorization: apiKey, // fortnite-api.com API key

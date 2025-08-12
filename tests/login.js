@@ -1,6 +1,8 @@
 // if you use this, replace "../index.js" with "@ozrageharm/epiccore"
 const epiccore = require('../index.js');
 
+console.log(epiccore.clientTokens)
+
 (async () => {
     const authCode = "your-auth-code-here"
     try {

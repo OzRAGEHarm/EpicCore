@@ -2,11 +2,15 @@
 ## EpicCore is a Node.js API Wrapper created to Interact with Epic Games' API.
 ---
 
+## Installation:
 ```code
-> npm i @ozrageharm/epiccore
+> npm i @ozrageharm/epiccore@latest
 ```
 
+Documentation can be found [here](https://github.com/OzRAGEHarm/EpicCore/blob/main/docs.md)
+
 ### Auth Code Login example:
+**Get an auth code [here](https://www.epicgames.com/id/login?redirectUrl=https%3A%2F%2Fwww.epicgames.com%2Fid%2Fapi%2Fredirect%3FclientId%3D3f69e56c7649492c8cc29f1af08a8a12%26responseType%3Dcode%0A&prompt=login) by logging in.**
 
 ```javascript
 const epiccore = require('@ozrageharm/epiccore');
@@ -16,6 +20,19 @@ const epiccore = require('@ozrageharm/epiccore');
     const auth = await epiccore.login({ method: "code", value: authCode });
     console.log(`Logged in as: ${auth.displayName}`)
 
+})();
+```
+
+### Listing all available client tokens
+```javascript
+const epiccore = require('@ozrageharm/epiccore');
+
+(async () => {
+  try {
+    console.log(epiccore.clientTokens)
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
 })();
 ```
 

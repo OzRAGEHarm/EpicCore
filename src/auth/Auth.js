@@ -22,7 +22,7 @@ class Auth {
     }
   
     const url = 'https://account-public-service-prod.ol.epicgames.com/account/api/oauth/token';
-    const token = client ? clientTokens[client] : 'MzQ0NmNkNzI2OTRjNGE0NDg1ZDgxYjc3YWRiYjIxNDE6OTIwOWQ0YTVlMjVhNDU3ZmI5YjA3NDg5ZDMxM2I0MWE=';
+    const token = client ? clientTokens[client] : clientTokens.ANDROID_TOKEN;
     const headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': `Basic ${token}`,
@@ -48,14 +48,14 @@ class Auth {
       }
       throw new Error(error.message);
     }
-  }  
+  }
 
   async createDeviceAuth(credentials) {
     const url = `https://account-public-service-prod.ol.epicgames.com/account/api/public/account/${credentials.account_id}/deviceAuth`;
-    const payload = querystring.stringify({}); // Empty payload
+    const payload = querystring.stringify({});
     const headers = {
       'Authorization': `Bearer ${credentials.access_token}`,
-      'Content-Type': 'application/json', // Add Content-Type header
+      'Content-Type': 'application/json',
     };
 
     try {

@@ -20,18 +20,19 @@ class Cosmetics {
     }
   }
 
-  async getPath(path) {
-    path = path
-      .replace(/^FortniteGame\/Content/, "/Game")
-      .replace(
-        /FortniteGame\/Plugins\/GameFeatures\/BRCosmetics\/Content/,
-        "/BRCosmetics"
-      )
-      .split("/")
+  async getPath(path) {  
+    if (typeof path !== 'string') {
+      console.error('Path must be a string, received:', path);
+      return '';
+    }
+    
+    return path
+      .replace(/^FortniteGame\/Content/, '/Game')
+      .replace(/FortniteGame\/Plugins\/GameFeatures\/BRCosmetics\/Content/, '/BRCosmetics')
+      .replace(/FortniteGame\/Plugins\/GameFeatures\/CosmeticShoes\/Content/, '/CosmeticShoes')
+      .split('/')
       .slice(0, -1)
-      .join("/");
-
-    return path;
+      .join('/');
   }
 }
 
