@@ -19,10 +19,14 @@ class Auth {
       case 'refresh':
         payload = `grant_type=refresh_token&refresh_token=${auth.value}&token_type=eg1`;
         break;
+      case 'client':
+        payload = `grant_type=client_credentials&token_type=eg1`
+        break;
     }
   
     const url = 'https://account-public-service-prod.ol.epicgames.com/account/api/oauth/token';
-    const token = client ? clientTokens[client] : clientTokens.ANDROID_TOKEN;
+    let token;
+    if (!client || client === null || client === undefined) token = clientTokens.PC_TOKEN;
     const headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': `Basic ${token}`,
@@ -35,7 +39,7 @@ class Auth {
       if (data.errorMessage) throw new Error(JSON.stringify(data));
   
       // Modify the access_token in data to be a UTF-8 string
-      //data.access_token = Buffer.from(data.access_token, 'binary').toString('utf8');
+      data.access_token = Buffer.from(data.access_token, 'binary').toString('utf8');
   
       return data;
     } catch (error) {

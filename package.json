@@ -1,6 +1,6 @@
 {
   "name": "@ozrageharm/epiccore",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "EpicCore is a Node.js API Wrapper created to Interact with Epic Games' API.",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/OzRAGEHarm/EpicCore#readme",
   "dependencies": {
-    "axios": "^1.11.0",
-    "request-promise": "^4.2.6"
+    "axios": "^1.11.0"
   }
 }
